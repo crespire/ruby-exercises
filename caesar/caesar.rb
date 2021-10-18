@@ -21,6 +21,6 @@ def wrapChar(char, offset=0)
   
   def cypherize(phrase, offset=0)
     result = ""
-    phrase.each_char { |c| result += wrapChar(c, offset).to_s }
+    phrase.each_char { |c| result += wrapChar(c, offset) }
     result
   end
