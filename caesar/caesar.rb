@@ -1,29 +1,17 @@
-require 'pry-byebug'
-
 def wrapChar(char, offset=0)
-    range_start = 0
+    range_start = char.ord < 91 ? 65 : 97
 
-    if char == char.upcase
-      range_start = "A".ord
-      range_end = "Z".ord
-    elsif char == char.downcase
-      range_start = "a".ord
-      range_end = "z".ord
-    end
-
-    if range_start == 65 || range_start == 97 then
-        wrapped = range_start + ((char.ord - range_start) + offset) % (range_end - range_start + 1)
+    if char.ord.between?(65, 90) || char.ord.between?(97, 122) then
+        wrapped = range_start + (((char.ord - range_start) + offset) % 26)
     else
         wrapped = char.ord
     end
 
-    binding.pry
-
     wrapped.chr
   end
   
-  def cypherize(phrase, offset=0)
+  def caesar_cipher(phrase, offset=0)
     result = ""
-    phrase.each_char { |c| result += wrapChar(c, offset) }
+    phrase.each_char { |c| result += wrapChar(c, offset).to_s }
     result
   end
