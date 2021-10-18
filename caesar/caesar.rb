@@ -1,4 +1,7 @@
+require 'pry-byebug'
+
 def wrapChar(char, offset=0)
+    range_start = 0
 
     if char == char.upcase
       range_start = "A".ord
@@ -8,13 +11,13 @@ def wrapChar(char, offset=0)
       range_end = "z".ord
     end
 
-    if range_start == 65 then
-        wrapped = range_start + ((char.ord - range_start) + offset) % (range_end - range_start)
-    elsif range_start == 97 then
-        wrapped = range_start + ((char.ord - range_start) + offset) % (range_end - range_start)
+    if range_start == 65 || range_start == 97 then
+        wrapped = range_start + ((char.ord - range_start) + offset) % (range_end - range_start + 1)
     else
         wrapped = char.ord
     end
+
+    binding.pry
 
     wrapped.chr
   end
