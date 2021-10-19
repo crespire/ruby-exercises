@@ -2,12 +2,13 @@ def substrings(input, dictionary)
     return nil if input.empty?
     return nil if dictionary.empty?
 
-    sanitized = input.downcase.gsub(/[[:punct:]]/, '').split
+    sanitized = input.downcase.split
         
     dictionary.reduce(Hash.new(0)) do |found, word|
         sanitized.each do |match|
             found[word] += 1 if match.include? word
         end
+        found
     end
 end
 
