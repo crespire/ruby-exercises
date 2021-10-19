@@ -20,7 +20,7 @@ def stock_picker(values)
 end
 
 priceA = [17,3,6,9,15,8,6,1,10]
-p stock_picker(priceA) #Should reutnr [1, 4]
+p stock_picker(priceA) #Should return [1, 4]
 priceB = [26,3,6,2,15,8,6,22,1]
 p stock_picker(priceB) #Should return [3, 7]
 priceC = [44, 30, 24, 32, 35, 30, 40, 38, 15]
