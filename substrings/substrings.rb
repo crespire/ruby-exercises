@@ -6,9 +6,7 @@ def substrings(input, dictionary)
         
     dictionary.reduce(Hash.new(0)) do |found, word|
         sanitized.each do |match|
-            if match.include? word then
-                found[word] += 1
-            end
+            found[word] += 1 if match.include? word
         end
     end
 end
