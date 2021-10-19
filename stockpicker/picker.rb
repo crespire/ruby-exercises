@@ -12,7 +12,7 @@ def stock_picker(values)
 
         if profit > best_profit then
             buy = price < values[buy] ? index : buy
-            sell = index+1
+            sell = index + 1
             best_profit = profit
         end
     end
