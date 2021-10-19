@@ -1,9 +1,11 @@
 def substrings(input, dictionary)
-    # Process input so we can compare easily
-    #  Strip all punctuation if there is any.
-    # Reduce with initial empty hash
+    return nil if input.empty?
+    return nil if dictionary.empty?
+
+    sanitized = input.downcase.gsub(/[[:punct:]]/, '')
+    
     dictionary.reduce(Hash.new(0)) do |found, word|
-        if input.include? word
+        if sanitized.include? word
             found[word.to_sym] += 1
         end
     end
