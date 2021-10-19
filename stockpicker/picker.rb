@@ -1,23 +1,22 @@
 def stock_picker(values)
     best_profit = 0
-    bestSell = nil
-    bestBuy = nil
+    buy = 0
+    sell = 0
 
-    values.each_with_index do |price, index|
-        buy = bestBuy
-        buy = price if buy == nil || (bestBuy > price)
-        sell = bestSell
-        sell = values[index+1] if values[index+1] != nil
-        
-        profit = sell - buy
+    values.each_with_index do | price, index |
+        today = price < values[buy] ? price : values[buy]
+        tomorrow = price
+        tomorrow = values[index+1] if !(values[index+1] == nil)
+
+        profit = tomorrow - today
 
         if profit > best_profit then
-            bestBuy = buy if values.find_index(buy) < values.find_index(sell)
-            bestSell = sell if values.find_index(sell) > values.find_index(buy)
-            best_profit = bestSell - bestBuy
+            buy = price < values[buy] ? index : buy
+            sell = index+1
+            best_profit = profit
         end
     end
-    [values.find_index(bestBuy), values.find_index(bestSell)]
+    [buy, sell]
 end
 
 priceA = [17,3,6,9,15,8,6,1,10]
