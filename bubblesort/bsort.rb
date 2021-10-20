@@ -8,8 +8,7 @@ def bubble_sort(array)
             next_val = array[index+1]
             if element > next_val then
                 swapped = true
-                array[index+1] = element 
-                array[index] = next_val
+                array[index], array[index+1] = next_val, element
             end
         end
         counter -= 1
