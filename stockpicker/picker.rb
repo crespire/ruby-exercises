@@ -16,7 +16,7 @@ def stock_picker(values)
             best_profit = profit
         end
     end
-    [buy, sell] unless best_profit == 0
+    [buy, sell] unless best_profit.zero?
 end
 
 priceA = [17,3,6,9,15,8,6,1,10]
@@ -31,3 +31,5 @@ priceE = [40,20,10,11,4]
 p stock_picker(priceE) #Should return [2, 3]
 priceF = [40,20,10,6,4]
 p stock_picker(priceF) #Should return nil
+priceG = [5,8,4,40,6,1,2,33]
+p stock_picker(priceG) #Should return [2,3]
